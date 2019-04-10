@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using FlightSimulator.Model;
 
 namespace FlightSimulator
 {
@@ -22,6 +23,16 @@ namespace FlightSimulator
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void ConnectButton_Click(object sender, RoutedEventArgs e)
+        {
+            Server server = new Server(5400);
+            server.connectToServer();
+            SettingButton.Content = "connect pressed";
+            server.write("write a message: ");
+            string message = server.read();
+            ConnectButton.Content = message;
         }
     }
 }

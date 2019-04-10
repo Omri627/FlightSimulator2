@@ -7,72 +7,72 @@
         xmlns:Controls="clr-namespace:FlightSimulator.Views"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-  <Grid>
-    <!-- main grid contains tow rows-->
-    <Grid.RowDefinitions>
-      <RowDefinition Height="*" />
-      <RowDefinition Height="10*" />
-    </Grid.RowDefinitions>
+    <Grid>
+        <!-- main grid contains tow rows-->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="10*" />
+        </Grid.RowDefinitions>
 
-    <TextBlock Grid.Row="0" Text="Flight Simulator" HorizontalAlignment="Center" FontSize="26"
+        <TextBlock Grid.Row="0" Text="Flight Simulator" HorizontalAlignment="Center" FontSize="26"
                 TextBlock.Foreground="Purple">
 
-    </TextBlock>
-    <!-- second Grid is for the flightScreen and the contoller-->
-    <Grid Grid.Row="1" >
-      <!-- define tow column -->
-      <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="*" />
-        <ColumnDefinition Width="*" />
-      </Grid.ColumnDefinitions>
-      <!-- grid for tow buttons and flightBoard-->
-      <Grid>
-        <Grid.RowDefinitions>
-          <RowDefinition Height="*" />
-          <RowDefinition Height="10*" />
-        </Grid.RowDefinitions>
-        <!-- grid for two buttons -->
-        <Grid Grid.Row="0">
-          <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-          </Grid.ColumnDefinitions>
-          <!-- Column 1 -->
-          <Button Grid.Column="0" x:Name="ConnectButton" Content="Connect"/>
-          <Button Grid.Column="1" x:Name="SettingButton" Content="Setting"/>
+        </TextBlock>
+        <!-- second Grid is for the flightScreen and the contoller-->
+        <Grid Grid.Row="1" >
+            <!-- define tow column -->
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <!-- grid for tow buttons and flightBoard-->
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="10*" />
+                </Grid.RowDefinitions>
+                <!-- grid for two buttons -->
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <!-- Column 1 -->
+                    <Button Grid.Column="0" x:Name="ConnectButton" Content="Connect" Grid.ColumnSpan="2" Margin="0,0,197.667,-0.333" HorizontalAlignment="Right" Width="199" Height="35" VerticalAlignment="Bottom" Click="ConnectButton_Click" RenderTransformOrigin="0.502,0.51"/>
+                    <Button Grid.Column="1" x:Name="SettingButton" Content="Setting"/>
+                </Grid>
+
+                <Controls:FlightBoard Grid.Row="1"/>
+            </Grid>
+            <TabControl Grid.Column="1">
+                <TabItem Header="Manual">
+                    <Controls:Joystick/>
+                </TabItem>
+                <TabItem Header="Auto Pilot">
+                    <!-- grid with two rows-->
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="10*" />
+                            <RowDefinition Height="1*" />
+                        </Grid.RowDefinitions>
+
+                        <TextBox x:Name="TextBoxCommand" Grid.Row="0"/>
+                        <!-- grid for two buttons-->
+                        <Grid Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <!-- Column 1 -->
+                            <Button Grid.Column="0" x:Name="OkButton" Content="Ok"/>
+                            <!-- Column 2 -->
+                            <Button Grid.Column="1" x:Name="ClearButton" Content="Clear"/>
+                        </Grid>
+
+                    </Grid>
+                </TabItem>
+            </TabControl>
         </Grid>
 
-        <Controls:FlightBoard Grid.Row="1"/>
-      </Grid>
-      <TabControl Grid.Column="1">
-        <TabItem Header="Manual">
-          <Controls:Joystick/>
-        </TabItem>
-        <TabItem Header="Auto Pilot">
-          <!-- grid with two rows-->
-          <Grid>
-            <Grid.RowDefinitions>
-              <RowDefinition Height="10*" />
-              <RowDefinition Height="1*" />
-            </Grid.RowDefinitions>
-
-            <TextBox x:Name="TextBoxCommand" Grid.Row="0"/>
-            <!-- grid for two buttons-->
-            <Grid Grid.Row="1">
-              <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-              </Grid.ColumnDefinitions>
-              <!-- Column 1 -->
-              <Button Grid.Column="0" x:Name="OkButton" Content="Ok"/>
-              <!-- Column 2 -->
-              <Button Grid.Column="1" x:Name="ClearButton" Content="Clear"/>
-            </Grid>
-
-          </Grid>
-        </TabItem>
-      </TabControl>
     </Grid>
-
-  </Grid>
 </Window>
