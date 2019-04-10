@@ -46,17 +46,7 @@
       </Grid>
       <TabControl Grid.Column="1">
         <TabItem Header="Manual">
-          <!--joystick tab-->
-          <Grid>
-            <Grid.RowDefinitions>
-              <RowDefinition Height="*" />
-              <RowDefinition Height="*" />
-              <RowDefinition Height="9*" />
-              <RowDefinition Height="*" />
-              <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
-          </Grid>
-
+          <Controls:Joystick/>
         </TabItem>
         <TabItem Header="Auto Pilot">
           <!-- grid with two rows-->
@@ -80,7 +70,6 @@
             </Grid>
 
           </Grid>
-
         </TabItem>
       </TabControl>
     </Grid>
