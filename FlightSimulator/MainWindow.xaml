@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:FlightSimulator"
         xmlns:Controls="clr-namespace:FlightSimulator.Views"
         mc:Ignorable="d"
-        Title="MainWindow" Height="550" Width="900">
+        MinHeight="540" MinWidth="950"
+        Title="MainWindow" Height="550" Width="950">
     <Grid>
         <!-- main grid contains tow rows-->
         <Grid.RowDefinitions>
