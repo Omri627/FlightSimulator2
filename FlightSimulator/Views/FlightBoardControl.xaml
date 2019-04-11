@@ -19,7 +19,7 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <!-- Column 1 -->
-            <Button Grid.Column="0" x:Name="ConnectButton" Content="Connect" Margin="0,0,0.333,0.333" Command="{Binding InfoServerCommand}"/>
+            <Button Grid.Column="0" x:Name="ConnectButton" Content="Connect" Margin="0,0,0.333,0.333" Command="{Binding ConnectCommand}"/>
             <Button Grid.Column="1" x:Name="SettingButton" Content="Setting" Command="{Binding SettingCommand}"/>
         </Grid>
 

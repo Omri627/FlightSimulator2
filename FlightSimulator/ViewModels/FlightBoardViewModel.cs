@@ -12,7 +12,10 @@ namespace FlightSimulator.ViewModels
 {
     public class FlightBoardViewModel : BaseNotify
     {
-        private Server server;
+        private FlightModel model;
+        public FlightBoardViewModel() {
+            model = new FlightModel();
+        }
         public double Lon
         {
             get;
@@ -27,23 +30,20 @@ namespace FlightSimulator.ViewModels
         private ICommand _connectCommand;
         public ICommand ConnectCommand
         {
-            get
-            {
+            get {
                 return _connectCommand ?? (_connectCommand = new CommandHandler(() => OnConnect()));
             }
         }
         private void OnConnect()
         {
-            server = new Server(5400);
-            server.connectToServer();
+            model.connectToServers();
         }
         #endregion
         #region SettingsCommand
         private ICommand _settingCommand;
         public ICommand SettingCommand
         {
-            get
-            {
+            get {
                 return _settingCommand ?? (_settingCommand = new CommandHandler(() => onSettings()));
             }
         }
