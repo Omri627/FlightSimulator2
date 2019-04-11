@@ -49,7 +49,7 @@
         <!--sliderThrottle-->
         <Grid Grid.Row="2" Grid.Column="2" VerticalAlignment="Center" >
 
-            <Slider x:Name="sliderThrottle"  Minimum="0" Maximum="1" TickPlacement="BottomRight" TickFrequency="0.1"  Orientation="Vertical" Margin="-14,0,-0.6,38.6" Height="291" VerticalAlignment="Bottom"/>
+            <Slider x:Name="sliderThrottle" Value="{Binding Throttle}"  Minimum="0" Maximum="1" TickPlacement="BottomRight" TickFrequency="0.1"  Orientation="Vertical" Margin="-14,0,-0.6,38.6" Height="291" VerticalAlignment="Bottom"/>
 
         </Grid>
         <!--joystick-->
@@ -74,13 +74,13 @@
                 </TextBlock.RenderTransform>
             </TextBlock>
             <!--aileron text value-->
-            <TextBlock Grid.Row="0" Text="0.0" HorizontalAlignment="Center" Height="16" VerticalAlignment="Top"  >
+            <TextBlock Grid.Row="0" Text="{Binding Aileron}" HorizontalAlignment="Center" Height="16" VerticalAlignment="Top"  >
                 <TextBlock.Foreground>
                     <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ActiveCaptionTextColorKey}}"/>
                 </TextBlock.Foreground>
             </TextBlock>
             <!--elevator value-->
-            <TextBlock Grid.Row="1" Text="0.0" VerticalAlignment="Top">
+            <TextBlock x:Name="elevatorValue" Grid.Row="1" Text="{Binding Elevator}" VerticalAlignment="Top">
                 <TextBlock.Foreground>
                     <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ActiveCaptionTextColorKey}}"/>
                 </TextBlock.Foreground>
@@ -94,7 +94,7 @@
         </Grid>
         <!-- rudder slider-->
         <Grid  Grid.Column="3" Grid.Row="3" >
-            <Slider x:Name="sliderRudder" Minimum="0" Maximum="1" TickPlacement="BottomRight" TickFrequency="0.1" Margin="25,0,55.8,0" />
+            <Slider x:Name="sliderRudder" Value="{Binding Rudder}" Minimum="0" Maximum="1" TickPlacement="BottomRight" TickFrequency="0.1" Margin="25,0,55.8,0" />
         </Grid>
         <!-- rudder value-->
         <Grid Grid.Column="4" Grid.Row="3" >

@@ -52,30 +52,7 @@
                 </TabItem>
                 <TabItem Header="Auto Pilot">
                     <!-- grid with two rows-->
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="30*"/>
-                            <ColumnDefinition Width="361*"/>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="10*" />
-                            <RowDefinition Height="1*" />
-                        </Grid.RowDefinitions>
-
-                        <TextBox x:Name="TextBoxCommand" Grid.Row="0" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
-                        <!-- grid for two buttons-->
-                        <Grid Grid.Row="1" Grid.ColumnSpan="2">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="*" />
-                            </Grid.ColumnDefinitions>
-                            <!-- Column 1 -->
-                            <Button Grid.Column="0" x:Name="OkButton" Content="Ok"/>
-                            <!-- Column 2 -->
-                            <Button Grid.Column="1" x:Name="ClearButton" Content="Clear"/>
-                        </Grid>
-
-                    </Grid>
+                    <Controls:AutoPilotControl></Controls:AutoPilotControl>
                 </TabItem>
             </TabControl>
         </Grid>
