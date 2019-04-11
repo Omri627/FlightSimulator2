@@ -35,12 +35,15 @@ namespace FlightSimulator.Model
         }
         public string read()  {
             int index = 0;
+            char ch;
             char[] data = new char[512];                   // message recevied from server
             NetworkStream stream = client.GetStream();
             BinaryReader reader = new BinaryReader(stream);
-            while (reader.ReadChar() == 0)
-                data[index] = reader.ReadChar();
-            return data.ToString();
+            while ((ch = reader.ReadChar()) != '\n')
+                data[index++] = ch;
+            data[index-1] = '\0';
+            string str =  new string(data, 0, index-1);
+            return str;
         }
         public void closeConnection()  {
             client.Close();

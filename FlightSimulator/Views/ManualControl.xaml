@@ -23,7 +23,7 @@
         </Grid.RowDefinitions>
 
         <TextBlock Grid.Row="0" Grid.Column="2" FontSize="18" Text="aileron" HorizontalAlignment="Center"/>
-        <TextBlock Grid.Row="0" x:Name="AileronText" Grid.Column="3" FontSize="18" Text="0.0" HorizontalAlignment="Center"/>
+        <TextBlock Grid.Row="0" x:Name="AileronValue" Grid.Column="3" FontSize="18" Text="{Binding Aileron}" HorizontalAlignment="Center"/>
         <!--throttle text-->
         <TextBlock Grid.Column="0" Grid.Row="1" Text="throttle" FontSize="18" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Center" HorizontalAlignment="Center" >
             <TextBlock.RenderTransform>
@@ -34,12 +34,13 @@
         <!--throttle slider-->
         <Grid Grid.Column="1" Grid.Row="1">
             <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="7*"/>
+                <RowDefinition Height="46*"/>
+                <RowDefinition Height="114*"/>
+                <RowDefinition Height="211*"/>
             </Grid.RowDefinitions>
 
-            <TextBlock Grid.Row="0" Text="0.0" FontSize="18" HorizontalAlignment="Center"></TextBlock>
-            <Slider Grid.Row="1" x:Name="ThrottleSlider" Minimum="0" Maximum="1" TickFrequency="0.1" HorizontalAlignment="Center" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5">
+            <TextBlock x:Name="ThrottleValue" Grid.Row="0" Text="{Binding Throttle}" FontSize="18" HorizontalAlignment="Center" Margin="31,0,30.333,0"></TextBlock>
+            <Slider Grid.Row="2" x:Name="ThrottleSlider" Value="{Binding Throttle}" Minimum="0" Maximum="1" TickFrequency="0.1" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <Slider.RenderTransform>
                     <RotateTransform Angle="90" />
                 </Slider.RenderTransform>
@@ -60,15 +61,15 @@
                 </TextBlock.RenderTransform>
             </TextBlock>
 
-            <TextBlock Grid.Row="0" x:Name="elevatorText" Text="0.0" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5">
+            <TextBlock Grid.Row="0" x:Name="elevatorText" Text="{Binding Elevator}" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5">
                 <TextBlock.RenderTransform>
                     <RotateTransform Angle="90" />
                 </TextBlock.RenderTransform>
             </TextBlock>
         </Grid>
 
-        <Slider Grid.Column="2" Grid.Row="2" Minimum="0" Maximum="1" TickFrequency="0.1"></Slider>
-        <TextBlock x:Name="rudderText" Grid.Row="2" Grid.Column="3" FontSize="18" Text="0.0" HorizontalAlignment="Center"/>
+        <Slider Grid.Column="2" Grid.Row="2" Minimum="0" Maximum="1" Value="{Binding Rudder}" TickFrequency="0.1" ValueChanged="Slider_ValueChanged"></Slider>
+        <TextBlock x:Name="rudderValue" Grid.Row="2" Grid.Column="3" FontSize="18" Text="{Binding Rudder}" HorizontalAlignment="Center"/>
 
         <TextBlock Grid.Row="3" Grid.Column="2" FontSize="18" Text="rudder" HorizontalAlignment="Center"/>
 

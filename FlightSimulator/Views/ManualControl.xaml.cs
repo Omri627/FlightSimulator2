@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using FlightSimulator.ViewModels;
 
 namespace FlightSimulator.Views
 {
@@ -20,9 +21,17 @@ namespace FlightSimulator.Views
     /// </summary>
     public partial class ManualControl : UserControl
     {
+        public FlightBoardViewModel vm;
         public ManualControl()
         {
             InitializeComponent();
+            vm = new FlightBoardViewModel();
+            this.DataContext = vm;
+        }
+
+        private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+
         }
     }
 }

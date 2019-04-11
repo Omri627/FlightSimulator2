@@ -16,14 +16,16 @@ namespace FlightSimulator.Model
         private Server server;
         InfoServerCommand(int port)  {
             this.port = port;
+            server = new Server(port);
         }
         public bool CanExecute(object parameter)  {
             return true;
         }
 
         public void Execute(object parameter)  {
-            server = new Server(port);
+            server.connectToServer();
             string message = server.read();
+            server.closeConnection();
         }
     }
 }

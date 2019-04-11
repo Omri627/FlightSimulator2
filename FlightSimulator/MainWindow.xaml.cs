@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using FlightSimulator.Model;
+using FlightSimulator.ViewModels;
 
 namespace FlightSimulator
 {
@@ -20,9 +21,12 @@ namespace FlightSimulator
     /// </summary>
     public partial class MainWindow : Window
     {
+        public FlightBoardViewModel vm;
         public MainWindow()
         {
             InitializeComponent();
+            vm = new FlightBoardViewModel();
+            this.DataContext = vm;
         }
 
         private void ConnectButton_Click(object sender, RoutedEventArgs e)
@@ -34,5 +38,6 @@ namespace FlightSimulator
             string message = server.read();
             ConnectButton.Content = message;
         }
+        
     }
 }
