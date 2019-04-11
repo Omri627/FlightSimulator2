@@ -25,7 +25,7 @@
             <ColumnDefinition Width="auto"/>
 
         </Grid.ColumnDefinitions>
-
+        <!--throttle value text-->
         <Grid Grid.Column="2" Grid.Row="1" Width="30">
             <TextBlock Text="{Binding ElementName=sliderThrottle, Path=Value , StringFormat=N2}" Margin="-18,28,18,-28" Height="16" VerticalAlignment="Top"  >
                 <TextBlock.Foreground>
@@ -36,7 +36,7 @@
         <Grid Grid.Column="3" Grid.Row="1" >
             <TextBlock Text="aileron"  FontWeight="Bold"  HorizontalAlignment="Center" Foreground="Black" />
         </Grid>
-
+        <!--throttle text-->
         <Grid Grid.Column="1" Grid.Row="2" >
             <TextBlock Text="throttle"  FontWeight="Bold"  VerticalAlignment="Center" Foreground="Black"  >
                 <TextBlock.RenderTransform>
@@ -46,31 +46,57 @@
                 </TextBlock.RenderTransform>
             </TextBlock>
         </Grid>
+        <!--sliderThrottle-->
+        <Grid Grid.Row="2" Grid.Column="2" VerticalAlignment="Center" >
 
-        <Grid Grid.Row="2" Grid.Column="2" VerticalAlignment="Bottom" >
-
-            <Slider x:Name="sliderThrottle"  Minimum="-1" Maximum="1" TickPlacement="BottomRight" TickFrequency="0.1"  Orientation="Vertical" Margin="-14,0,-0.6,38.6" Height="291" VerticalAlignment="Bottom"/>
+            <Slider x:Name="sliderThrottle"  Minimum="0" Maximum="1" TickPlacement="BottomRight" TickFrequency="0.1"  Orientation="Vertical" Margin="-14,0,-0.6,38.6" Height="291" VerticalAlignment="Bottom"/>
 
         </Grid>
-
+        <!--joystick-->
         <Grid Grid.Column="3" Grid.Row="2" >
-            <local:Joystick  HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="379" Margin="0,0,0,5.8" Width="336"/>
+            <local:Joystick  HorizontalAlignment="Center" VerticalAlignment="Center" Height="379" Margin="0,0,0,5.8" Width="336"/>
         </Grid>
 
         <Grid  Grid.Column="4" Grid.Row="2" >
-            <TextBlock Text="elevator"  FontWeight="Bold"  VerticalAlignment="Center" Foreground="Black" >
+            <Grid.RowDefinitions>
+               <RowDefinition Height="*"/>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <!-- elvator text-->
+            <TextBlock Grid.Row="2" Text="elevator"  FontWeight="Bold"  VerticalAlignment="Center" Foreground="Black" >
                 <TextBlock.RenderTransform>
                     <TransformGroup>
                         <RotateTransform Angle="-90"/>
                     </TransformGroup>
                 </TextBlock.RenderTransform>
             </TextBlock>
+            <!--aileron text value-->
+            <TextBlock Grid.Row="0" Text="0.0" HorizontalAlignment="Center" Height="16" VerticalAlignment="Top"  >
+                <TextBlock.Foreground>
+                    <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ActiveCaptionTextColorKey}}"/>
+                </TextBlock.Foreground>
+            </TextBlock>
+            <!--elevator value-->
+            <TextBlock Grid.Row="1" Text="0.0" VerticalAlignment="Top">
+                <TextBlock.Foreground>
+                    <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ActiveCaptionTextColorKey}}"/>
+                </TextBlock.Foreground>
+                <TextBlock.RenderTransform>
+                    <TransformGroup>
+                        <RotateTransform Angle="-90"/>
+                    </TransformGroup>
+                </TextBlock.RenderTransform>
+            </TextBlock>
+            
         </Grid>
-
+        <!-- rudder slider-->
         <Grid  Grid.Column="3" Grid.Row="3" >
-            <Slider x:Name="sliderRudder" Minimum="-1" Maximum="1" TickPlacement="BottomRight" TickFrequency="0.1" Margin="25,0,55.8,0" />
+            <Slider x:Name="sliderRudder" Minimum="0" Maximum="1" TickPlacement="BottomRight" TickFrequency="0.1" Margin="25,0,55.8,0" />
         </Grid>
-
+        <!-- rudder value-->
         <Grid Grid.Column="4" Grid.Row="3" >
             <TextBlock Text="{Binding ElementName=sliderRudder, Path=Value , StringFormat=N2}" VerticalAlignment="Top" Margin="-30,0,29.6,0"  >
                 <TextBlock.Foreground>
@@ -78,7 +104,7 @@
                 </TextBlock.Foreground>
             </TextBlock>
         </Grid>
-
+        <!-- rudder text-->
         <Grid Grid.Column="3" Grid.Row="4" >
             <TextBlock Text="rudder" FontWeight="Bold"  HorizontalAlignment="Center"  VerticalAlignment="Center" Foreground="Black" />
         </Grid>
