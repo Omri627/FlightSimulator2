@@ -26,7 +26,7 @@ namespace FlightSimulator
         {
             InitializeComponent();
             vm = new FlightBoardViewModel();
-            this.DataContext = vm;
+            DataContext = vm;
         }
 
         private void ConnectButton_Click(object sender, RoutedEventArgs e)
