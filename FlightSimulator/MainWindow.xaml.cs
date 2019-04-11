@@ -30,10 +30,10 @@ namespace FlightSimulator
         {
             Server server = new Server(5400);
             server.connectToServer();
-            SettingButton.Content = "connect pressed";
+            //SettingButton.Content = "connect pressed";
             server.write("write a message: ");
             string message = server.read();
-            ConnectButton.Content = message;
+            //ConnectButton.Content = message;
         }
         
     }
