@@ -9,7 +9,7 @@ namespace FlightSimulator.Model
 {
     class FlightModel
     {
-        private Server server;
+        private InfoServer server;
         private ISettingsModel model;
         public FlightModel()
         {
@@ -19,7 +19,7 @@ namespace FlightSimulator.Model
         {
             if (server != null)
                 return;
-            server = new Server(model.FlightCommandPort);
+            server = new InfoServer(model.FlightCommandPort);
             server.connectToServer();
             server.write("write a message: ");
             string message = server.read();

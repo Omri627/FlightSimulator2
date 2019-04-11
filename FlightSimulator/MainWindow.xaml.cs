@@ -28,7 +28,7 @@ namespace FlightSimulator
 
         private void ConnectButton_Click(object sender, RoutedEventArgs e)
         {
-            Server server = new Server(5400);
+            InfoServer server = new InfoServer(5400);
             server.connectToServer();
             //SettingButton.Content = "connect pressed";
             server.write("write a message: ");

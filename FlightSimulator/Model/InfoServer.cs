@@ -9,12 +9,12 @@ using System.IO;
 
 namespace FlightSimulator.Model
 {
-    class Server
+    class InfoServer
     {
         private int port;
         private TcpClient client;
         private TcpListener listener;
-        public Server(int port)  {
+        public InfoServer(int port)  {
             this.port = port;
         }
         public void connectToServer()  {

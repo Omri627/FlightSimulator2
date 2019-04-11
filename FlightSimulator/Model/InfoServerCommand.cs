@@ -13,10 +13,10 @@ namespace FlightSimulator.Model
     {
         public event EventHandler CanExecuteChanged;
         private int port;
-        private Server server;
+        private InfoServer server;
         InfoServerCommand(int port)  {
             this.port = port;
-            server = new Server(port);
+            server = new InfoServer(port);
         }
         public bool CanExecute(object parameter)  {
             return true;
