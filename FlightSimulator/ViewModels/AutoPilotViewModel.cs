@@ -34,7 +34,7 @@ namespace FlightSimulator.ViewModels
         }
         private void OnCancel()
         {
-            code = "";
+            Code = "";
         }
         #endregion
         #endregion
