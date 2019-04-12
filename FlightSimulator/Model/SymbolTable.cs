@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Specialized;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -35,5 +36,97 @@ namespace FlightSimulator.Model
         public static readonly string THROTTLE = "/controls/engines/current-engine/throttle";
         public static readonly string RPM = "/engines/engine/rpm";
 
+        private OrderedDictionary table;
+        /**
+         * constuctor - all keys are added with 0 as value
+         * */
+        public SymbolTable ()
+        {
+            table = new OrderedDictionary();
+
+            table.Add(LONGITUDE_DEG, 0);
+            table.Add(LATITUDE_DEG, 0);
+            table.Add(INDICATED_SPEED, 0);
+            table.Add(INDICATED_ALTITUDE_ALTIMETER, 0);
+            table.Add(PRESSURE_ALT_ALTIMETER, 0);
+            table.Add(INDICATED_PITCH_DEG, 0);
+            table.Add(INDICATED_ROLL_DEG, 0);
+            table.Add(INTERNAL_PITCH_DEG, 0);
+            table.Add(INDICATED_ALTITUDE_DEG, 0);
+            table.Add(PRESSURE_ALT_ENCODER, 0);
+            table.Add(INDICATED_ALTITUDE_GPS, 0);
+            table.Add(INDICATED_GROUND_SPEED_GPS, 0);
+            table.Add(INDICATED_VERTICAL_SPEED_GPS, 0);
+            table.Add(INDICATED_HEADING_DEG_INDECATOR, 0);
+            table.Add(INDICATED_HEADING_DEG_COMPASS, 0);
+            table.Add(INDICATED_SLIP_SKID, 0);
+            table.Add(INDICATED_TURN_RATE, 0);
+            table.Add(INDICATED_SPEED_FPM, 0);
+            table.Add(AILERON, 0);
+            table.Add(ALEVATOR, 0);
+            table.Add(RUDDER, 0);
+            table.Add(FLAPS, 0);
+            table.Add(THROTTLE, 0);
+            table.Add(RPM, 0);
+        }
+
+        /**
+         * indexer to add and get the values from existing keys
+         **/
+        public double this[string key]
+        {
+            get
+            {
+                double value;
+                if (table.Contains(key))
+                {
+                    value = table[key];
+                }
+                else
+                {
+                    Console.WriteLine("Key= " + key + " is not found.");
+                    return null;
+                }
+                return value;
+            }
+
+            set
+            {
+                if (table.Contains(key))
+                {
+                    table[key] = value;
+                }
+                else
+                {
+                    Console.WriteLine("Key= " + key + " is not found.");
+                }
+            }
+        }
+        /**
+         * update each value that separate by comma in the data string and add it to the Ordered dictonary 
+         **/
+        public void UpdateData(string data)
+        {
+            Queue<double> queue = splitData(data);
+            int queueCount = queue.Count;
+            for (int i = 0; i < table.Count; ++i)
+            {
+                if (i <= queueCount) //insert the element only if they exist also in the quque
+                    table[i] = queue[i];
+            }
+        }
+        /**
+         * split the data from the string that separate by commas, and return a quque of doubles 
+         * */
+        private Queue<double> splitData(string data)
+        {
+            string[] values = data.Split(',');
+            Queue<double> valuesQueue = new Queue<double>();
+            foreach (string s in values)
+            {
+                valuesQueue.Enqueue(double.Parse(s));
+            }
+            return valuesQueue;
+        }
     }
 }
