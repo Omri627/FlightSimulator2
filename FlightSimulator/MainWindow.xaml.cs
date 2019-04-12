@@ -24,7 +24,7 @@ namespace FlightSimulator
         public MainWindow()
         {
             InitializeComponent();
-            
+          
         }
 
         private void ConnectButton_Click(object sender, RoutedEventArgs e)

@@ -42,32 +42,33 @@ namespace FlightSimulator.Model
          * */
         public SymbolTable()
         {
-            table = new OrderedDictionary();
-
-            table.Add(LONGITUDE_DEG, 0);
-            table.Add(LATITUDE_DEG, 0);
-            table.Add(INDICATED_SPEED, 0);
-            table.Add(INDICATED_ALTITUDE_ALTIMETER, 0);
-            table.Add(PRESSURE_ALT_ALTIMETER, 0);
-            table.Add(INDICATED_PITCH_DEG, 0);
-            table.Add(INDICATED_ROLL_DEG, 0);
-            table.Add(INTERNAL_PITCH_DEG, 0);
-            table.Add(INDICATED_ALTITUDE_DEG, 0);
-            table.Add(PRESSURE_ALT_ENCODER, 0);
-            table.Add(INDICATED_ALTITUDE_GPS, 0);
-            table.Add(INDICATED_GROUND_SPEED_GPS, 0);
-            table.Add(INDICATED_VERTICAL_SPEED_GPS, 0);
-            table.Add(INDICATED_HEADING_DEG_INDECATOR, 0);
-            table.Add(INDICATED_HEADING_DEG_COMPASS, 0);
-            table.Add(INDICATED_SLIP_SKID, 0);
-            table.Add(INDICATED_TURN_RATE, 0);
-            table.Add(INDICATED_SPEED_FPM, 0);
-            table.Add(AILERON, 0);
-            table.Add(ALEVATOR, 0);
-            table.Add(RUDDER, 0);
-            table.Add(FLAPS, 0);
-            table.Add(THROTTLE, 0);
-            table.Add(RPM, 0);
+            table = new OrderedDictionary
+            {
+                { LONGITUDE_DEG, 0 },
+                { LATITUDE_DEG, 0 },
+                { INDICATED_SPEED, 0 },
+                { INDICATED_ALTITUDE_ALTIMETER, 0 },
+                { PRESSURE_ALT_ALTIMETER, 0 },
+                { INDICATED_PITCH_DEG, 0 },
+                { INDICATED_ROLL_DEG, 0 },
+                { INTERNAL_PITCH_DEG, 0 },
+                { INDICATED_ALTITUDE_DEG, 0 },
+                { PRESSURE_ALT_ENCODER, 0 },
+                { INDICATED_ALTITUDE_GPS, 0 },
+                { INDICATED_GROUND_SPEED_GPS, 0 },
+                { INDICATED_VERTICAL_SPEED_GPS, 0 },
+                { INDICATED_HEADING_DEG_INDECATOR, 0 },
+                { INDICATED_HEADING_DEG_COMPASS, 0 },
+                { INDICATED_SLIP_SKID, 0 },
+                { INDICATED_TURN_RATE, 0 },
+                { INDICATED_SPEED_FPM, 0 },
+                { AILERON, 0 },
+                { ALEVATOR, 0 },
+                { RUDDER, 0 },
+                { FLAPS, 0 },
+                { THROTTLE, 0 },
+                { RPM, 0 }
+            };
         }
 
         /**
