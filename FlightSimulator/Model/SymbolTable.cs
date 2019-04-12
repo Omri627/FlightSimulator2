@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace FlightSimulator.Model
 {
 
-    class SymbolTable
+    public class SymbolTable
     {
         public static readonly string LONGITUDE_DEG = "/position/longitude-deg";
         public static readonly string LATITUDE_DEG = "/position/latitude-deg";
@@ -40,7 +40,7 @@ namespace FlightSimulator.Model
         /**
          * constuctor - all keys are added with 0 as value
          * */
-        public SymbolTable ()
+        public SymbolTable()
         {
             table = new OrderedDictionary();
 
@@ -80,14 +80,13 @@ namespace FlightSimulator.Model
                 double value;
                 if (table.Contains(key))
                 {
-                    value = table[key];
+                    value = (double)table[key];
+                    return value;
                 }
                 else
                 {
-                    Console.WriteLine("Key= " + key + " is not found.");
-                    return null;
+                    throw new KeyNotFoundException("Key= " + key + " is not found.");
                 }
-                return value;
             }
 
             set
@@ -111,8 +110,10 @@ namespace FlightSimulator.Model
             int queueCount = queue.Count;
             for (int i = 0; i < table.Count; ++i)
             {
-                if (i <= queueCount) //insert the element only if they exist also in the quque
-                    table[i] = queue[i];
+                if (i < queueCount) //insert the element only if they exist also in the quque
+                    table[i] = queue.Dequeue();
+                else
+                    break;
             }
         }
         /**
