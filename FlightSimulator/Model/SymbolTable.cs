@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 
 namespace FlightSimulator.Model
 {
-
     public class SymbolTable
     {
         public static readonly string LONGITUDE_DEG = "/position/longitude-deg";
@@ -35,7 +34,6 @@ namespace FlightSimulator.Model
         public static readonly string FLAPS = "/controls/flight/flaps";
         public static readonly string THROTTLE = "/controls/engines/current-engine/throttle";
         public static readonly string RPM = "/engines/engine/rpm";
-
         private OrderedDictionary table;
         /**
          * constuctor - all keys are added with 0 as value
@@ -107,7 +105,7 @@ namespace FlightSimulator.Model
          **/
         public void UpdateData(string data)
         {
-            Queue<double> queue = splitData(data);
+            Queue<double> queue = SplitData(data);
             int queueCount = queue.Count;
             for (int i = 0; i < table.Count; ++i)
             {
@@ -120,7 +118,7 @@ namespace FlightSimulator.Model
         /**
          * split the data from the string that separate by commas, and return a quque of doubles 
          * */
-        private Queue<double> splitData(string data)
+        private Queue<double> SplitData(string data)
         {
             string[] values = data.Split(',');
             Queue<double> valuesQueue = new Queue<double>();
