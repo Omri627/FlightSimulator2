@@ -19,10 +19,13 @@ namespace FlightSimulator.Model
         }
         public override void connectToServer()
         {
-            IPEndPoint ep = new IPEndPoint(IPAddress.Parse(ip), 8000);
+            IPEndPoint ep = new IPEndPoint(IPAddress.Parse(ip), 5400);
             client = new TcpClient();
             client.Connect(ep);
             Console.WriteLine("You are connected");
+            write("set /controls/engines/engine/throttle 0");
+            string s = read();
+            Console.WriteLine(s);
         }
         public override void closeConnection()
         {

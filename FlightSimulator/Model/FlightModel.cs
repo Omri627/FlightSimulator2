@@ -9,7 +9,8 @@ namespace FlightSimulator.Model
 {
     class FlightModel
     {
-        private InfoServer server;
+        private InfoServer info_server;
+        private CommandsServer commands_server;
         private ISettingsModel model;
         public FlightModel()
         {
@@ -17,13 +18,19 @@ namespace FlightSimulator.Model
         }
         public void connectToServers()
         {
-            if (server != null)
+            if (info_server != null && commands_server != null)
                 return;
-            server = new InfoServer(model.FlightCommandPort);
-            server.connectToServer();
-            server.write("write a message: ");
-            string message = server.read();
-            server.closeConnection();
+            info_server = new InfoServer(5400);
+            info_server.connectToServer();
+            //info_server.write("write a message: ");
+            string message = info_server.read();
+            info_server.closeConnection();
+            /*if (commands_server != null)
+                return;
+            commands_server = new CommandsServer(model.FlightServerIP, model.FlightCommandPort);
+            commands_server.connectToServer();
+            commands_server.write("set rudder");
+            commands_server.closeConnection(); */
         }
     }
 }
