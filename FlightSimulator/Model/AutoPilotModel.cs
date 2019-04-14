@@ -24,7 +24,7 @@ namespace FlightSimulator.Model
                 return;
             List<string> commands = GetCommands(code);
             foreach (string cmd in commands) {
-                server.Write(cmd + "\n");
+                server.Write(cmd + "\r\n");
                 Thread.Sleep(2000);                     // delay for 2 seconds
             }
 
