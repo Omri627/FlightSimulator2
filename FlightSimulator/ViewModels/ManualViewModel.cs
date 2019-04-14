@@ -76,7 +76,7 @@ namespace FlightSimulator.ViewModels
                 if (value >= -1 && value <= 1)
                 {
                     elevator = value;
-                    model.SetProperty(SymbolTable.ALEVATOR, elevator);
+                    model.SetProperty(SymbolTable.ELEVATOR, elevator);
                     PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Elevator"));
                 }
             }
