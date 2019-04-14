@@ -32,7 +32,7 @@ namespace FlightSimulator.Model
         public static readonly string INDICATED_TURN_RATE = "instrumentation/turn-indicator/indicated-turn-rate";
         public static readonly string INDICATED_SPEED_FPM = "instrumentation/vertical-speed-indicator/indicated-speed-fpm";
         public static readonly string AILERON = "controls/flight/aileron";
-        public static readonly string ALEVATOR = "controls/flight/elevator";
+        public static readonly string ELEVATOR = "controls/flight/elevator";
         public static readonly string RUDDER = "controls/flight/rudder";       
         public static readonly string FLAPS = "controls/flight/flaps";
         public static readonly string THROTTLE = "controls/engines/current-engine/throttle";
@@ -80,7 +80,7 @@ namespace FlightSimulator.Model
                 { INDICATED_TURN_RATE, 0.0 },
                 { INDICATED_SPEED_FPM, 0.0 },
                 { AILERON, 0.0 },
-                { ALEVATOR, 0.0 },
+                { ELEVATOR, 0.0 },
                 { RUDDER, 0.0 },
                 { FLAPS, 0.0 },
                 { THROTTLE, 0.0 },
