@@ -37,6 +37,7 @@ namespace FlightSimulator.Model
         public static readonly string FLAPS = "/controls/flight/flaps";
         public static readonly string THROTTLE = "/controls/engines/current-engine/throttle";
         public static readonly string RPM = "/engines/engine/rpm";
+
         private OrderedDictionary table;
         public event PropertyChangedEventHandler PropertyChanged;
         #region Singleton
