@@ -23,7 +23,7 @@ namespace FlightSimulator.ViewModels
         public double Rudder
         {
             get {
-                return symbolTable[SymbolTable.RUDDER];
+                return Floor(symbolTable[SymbolTable.RUDDER]);
             }
             set {
                 if (value >= 0 && value <= 1)
@@ -37,7 +37,7 @@ namespace FlightSimulator.ViewModels
         public double Elevator
         {
             get {
-                return symbolTable[SymbolTable.ALEVATOR];
+                return Floor(symbolTable[SymbolTable.ALEVATOR]);
             }
             set {
                 if (value >= 0 && value <= 1)
@@ -50,7 +50,7 @@ namespace FlightSimulator.ViewModels
         public double Throttle
         {
             get {
-                return symbolTable[SymbolTable.THROTTLE];
+                return Floor(symbolTable[SymbolTable.THROTTLE]);
             }
             set {
                 if (value >= 0 && value <= 1)
@@ -63,7 +63,7 @@ namespace FlightSimulator.ViewModels
         public double Aileron
         {
             get {
-                return symbolTable[SymbolTable.AILERON];
+                return Floor(symbolTable[SymbolTable.AILERON]);
             }
             set {
                 if (value >= 0 && value <= 1)
@@ -72,6 +72,10 @@ namespace FlightSimulator.ViewModels
                     PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Aileron"));
                 }
             }
+        }
+        public double Floor(double num)
+        {
+            return Math.Floor(num * 100) / 100;
         }
     }
 }

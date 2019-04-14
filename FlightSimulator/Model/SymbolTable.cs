@@ -33,7 +33,7 @@ namespace FlightSimulator.Model
         public static readonly string INDICATED_SPEED_FPM = "/instrumentation/vertical-speed-indicator/indicated-speed-fpm";
         public static readonly string AILERON = "/controls/flight/aileron";
         public static readonly string ALEVATOR = "/controls/flight/elevator";
-        public static readonly string RUDDER = "/controls/flight/rudder";
+        public static readonly string RUDDER = "/controls/flight/rudder";       
         public static readonly string FLAPS = "/controls/flight/flaps";
         public static readonly string THROTTLE = "/controls/engines/current-engine/throttle";
         public static readonly string RPM = "/engines/engine/rpm";
@@ -128,10 +128,13 @@ namespace FlightSimulator.Model
             {
                 if (i < queueCount)
                 {//insert the element only if they exist also in the queue
+
                     if ((double)table[i] != queue.Peek())
                     {
                         table[i] = queue.Dequeue();
                         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(GetProperty(i)));
+                    } else  {
+                        queue.Dequeue();
                     }
                 }
                 else
@@ -151,14 +154,25 @@ namespace FlightSimulator.Model
             }
             return valuesQueue;
         }
+        public void PrintItems()
+        {
+            Console.Write("Symbol Table: ");
+            foreach (double value in table.Values)
+            {
+                Console.Write("{0},", value);
+            }
+            Console.WriteLine();
+        }
         private string GetProperty(int index)
         {
             switch (index)
             {
-                case 0: return "Aileron";
-                case 1: return "Elevator";
-                case 2: return "Rudder";
-                case 3: return "Throttle";
+                case 0: return "Lon";
+                case 1: return "Lat";
+                case 18: return "Aileron";
+                case 19: return "Elevator";
+                case 20: return "Rudder";
+                case 22: return "Throttle";
                 default: return string.Empty;
             }
         } 

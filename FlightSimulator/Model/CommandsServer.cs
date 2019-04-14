@@ -33,9 +33,13 @@ namespace FlightSimulator.Model
         #endregion
         public override void connectToServer()
         {
-            IPEndPoint ep = new IPEndPoint(IPAddress.Parse(ip), 5400);
+            IPEndPoint ep = new IPEndPoint(IPAddress.Parse(ip), port);
             client = new TcpClient();
-            client.Connect(ep);
+            while (!client.Connected)
+            {
+                try { client.Connect(ep); }
+                catch (Exception) { }
+            }
             Console.WriteLine("You are connected");
         }
         public override void closeConnection()

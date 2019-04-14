@@ -53,7 +53,9 @@ namespace FlightSimulator.Model
             while (Stop == false)
             {
                 data = read();
+                Console.WriteLine(data);
                 symbolTable.UpdateData(data);
+                symbolTable.PrintItems();
             }
         }
     }
