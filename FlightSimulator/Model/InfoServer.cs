@@ -34,28 +34,19 @@ namespace FlightSimulator.Model
             client = listener.AcceptTcpClient();
             Console.WriteLine("Client connected");
         }
-        public void StartReadDataContinously()
-        {
-            ReadDataContinously();
-            //Thread readDataThread;
-            //readDataThread = new Thread(new ThreadStart(ReadDataContinously));
-            //readDataThread.Start();
-        }
         public override void closeConnection()  {
             Stop = true;
             client.Close();
             listener.Stop();
             client = null;
         }
-        private void ReadDataContinously()
+        public void ReadDataContinously()
         {
             string data;                            // data received from server
             while (Stop == false)
             {
                 data = read();
-                Console.WriteLine(data);
                 symbolTable.UpdateData(data);
-                symbolTable.PrintItems();
             }
         }
     }

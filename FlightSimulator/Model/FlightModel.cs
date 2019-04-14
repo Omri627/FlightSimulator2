@@ -23,7 +23,7 @@ namespace FlightSimulator.Model
                 return;
             info_server = new InfoServer(model.FlightInfoPort);
             info_server.connectToServer();
-            info_server.StartReadDataContinously();
+            info_server.ReadDataContinously();
         }
         public void ConnectCommandsServer()
         {
