@@ -34,11 +34,11 @@
             </TextBlock>
         </Grid>
         <Grid Grid.Column="3" Grid.Row="1" >
-            <TextBlock Text="aileron"  FontWeight="Bold"  HorizontalAlignment="Center" Foreground="Black" />
+            <TextBlock Text="&#x2190; aileron &#x2192;"  FontWeight="Bold"  HorizontalAlignment="Center" Foreground="Black" />
         </Grid>
         <!--throttle text-->
         <Grid Grid.Column="1" Grid.Row="2" >
-            <TextBlock Text="throttle"  FontWeight="Bold"  VerticalAlignment="Center" Foreground="Black"  >
+            <TextBlock Text="&#x2190; throttle &#x2192;"  FontWeight="Bold"  VerticalAlignment="Center" Foreground="Black"  >
                 <TextBlock.RenderTransform>
                     <TransformGroup>
                         <RotateTransform Angle="-90"/>
@@ -76,13 +76,13 @@
                 </TextBlock.RenderTransform>
             </TextBlock>
             <!--aileron text value-->
-            <TextBlock Grid.Row="0"  Name="AilronValue" Text="{Binding Aileron, UpdateSourceTrigger=PropertyChanged ,Mode=OneWayToSource}" HorizontalAlignment="Center" Height="16" VerticalAlignment="Top"  >
+            <TextBlock  FontWeight="Bold" Grid.Row="0"  Name="AilronValue" Text="{Binding Aileron, UpdateSourceTrigger=PropertyChanged ,Mode=OneWayToSource}" HorizontalAlignment="Center" Height="16" VerticalAlignment="Top"  >
                 <TextBlock.Foreground>
                     <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ActiveCaptionTextColorKey}}"/>
                 </TextBlock.Foreground>
             </TextBlock>
             <!--elevator value-->
-            <TextBlock  Name="ElevatorValue" Text="{Binding Elevator, UpdateSourceTrigger=PropertyChanged , Mode=OneWayToSource, StringFormat={}{0:0.00}}" Grid.Row="1"  VerticalAlignment="Top">
+            <TextBlock  FontWeight="Bold" Name="ElevatorValue" Text="{Binding Elevator, UpdateSourceTrigger=PropertyChanged , Mode=OneWayToSource, StringFormat={}{0:0.00}}" Grid.Row="1"  VerticalAlignment="Top">
                 <TextBlock.Foreground>
                     <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ActiveCaptionTextColorKey}}"/>
                 </TextBlock.Foreground>
