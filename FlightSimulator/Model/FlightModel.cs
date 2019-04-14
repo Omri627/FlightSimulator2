@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using FlightSimulator.Model.Interface;
 
@@ -16,21 +17,20 @@ namespace FlightSimulator.Model
         {
             model = ApplicationSettingsModel.Instance;
         }
-        public void connectToServers()
+        public void ConnectInfoServer()
         {
             if (info_server != null && commands_server != null)
                 return;
-            info_server = new InfoServer(5400);
+            info_server = new InfoServer(model.FlightInfoPort);
             info_server.connectToServer();
-            //info_server.write("write a message: ");
-            string message = info_server.read();
-            info_server.closeConnection();
-            /*if (commands_server != null)
+            info_server.StartReadDataContinously();
+        }
+        public void ConnectCommandsServer()
+        {
+            if (commands_server != null)
                 return;
-            commands_server = new CommandsServer(model.FlightServerIP, model.FlightCommandPort);
+            commands_server = CommandsServer.Instance;
             commands_server.connectToServer();
-            commands_server.write("set rudder");
-            commands_server.closeConnection(); */
         }
     }
 }

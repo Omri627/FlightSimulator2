@@ -20,7 +20,7 @@
             </Grid.ColumnDefinitions>
             <!-- Column 1 -->
             <Button Grid.Column="0" x:Name="ConnectButton" Content="Connect" Margin="0,0,0.333,0.333" Command="{Binding ConnectCommand}"/>
-            <Button Grid.Column="1" x:Name="SettingButton" Content="Setting" Command="{Binding SettingCommand}"/>
+            <Button Grid.Column="1" x:Name="SettingButton" Content="Settings" Command="{Binding SettingCommand}"/>
         </Grid>
 
         <local:FlightBoard Grid.Row="1"/>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,12 +9,15 @@ using FlightSimulator.Model;
 
 namespace FlightSimulator.ViewModels
 {
-    class AutoPilotViewModel
+    class AutoPilotViewModel : INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+        AutoPilotModel model;
         private string code;
         public AutoPilotViewModel()
         {
-            code = "Auto pilot text";
+            Code = "Auto pilot text";
+            model = new AutoPilotModel();
         }
         public string Code {
             get {
@@ -21,6 +25,7 @@ namespace FlightSimulator.ViewModels
             }
             set {
                 code = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Code"));
             }
         }
         #region Commands
@@ -36,6 +41,22 @@ namespace FlightSimulator.ViewModels
         {
             Code = "";
         }
+        #endregion
+        #region
+        private ICommand _okCommand;
+        public ICommand OkCommand
+        {
+            get
+            {
+                return _okCommand ?? (_okCommand = new CommandHandler(() => OnOk()));
+            }
+        }
+        private void OnOk()
+        {
+            model.ExecuteCode(code);
+            Code = "";
+        }
+
         #endregion
         #endregion
     }

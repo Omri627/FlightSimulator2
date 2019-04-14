@@ -16,7 +16,8 @@
             <RowDefinition Height="1*" />
         </Grid.RowDefinitions>
 
-        <TextBox x:Name="TextBoxCommand" Text="{Binding Code}" Grid.Row="0" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
+        <TextBox x:Name="TextBoxCommand" Text="{Binding Code}"   TextWrapping="Wrap" AcceptsReturn="True"
+            VerticalScrollBarVisibility="Visible" Grid.Row="0" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
         <!-- grid for two buttons-->
         <Grid Grid.Row="1" Grid.ColumnSpan="2">
             <Grid.ColumnDefinitions>
@@ -24,7 +25,7 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <!-- Column 1 -->
-            <Button Grid.Column="0" x:Name="OkButton" Content="Ok"/>
+            <Button Grid.Column="0" x:Name="OkButton" Content="Ok" Command="{Binding OkCommand}"/>
             <!-- Column 2 -->
             <Button Grid.Column="1" x:Name="ClearButton" Content="Clear" Command="{Binding CancelCommand}"/>
         </Grid>

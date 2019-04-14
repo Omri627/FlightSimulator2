@@ -28,6 +28,8 @@ namespace FlightSimulator.Model
             int index = 0;
             char ch;
             char[] data = new char[512];                   // message recevied from server
+            if (client == null || !client.Connected)
+                return string.Empty;
             NetworkStream stream = client.GetStream();
             BinaryReader reader = new BinaryReader(stream);
             while ((ch = reader.ReadChar()) != '\n')

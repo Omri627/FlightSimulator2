@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using FlightSimulator.Model;
 using FlightSimulator.Views.Windows;
+using System.Threading;
 
 namespace FlightSimulator.ViewModels
 {
@@ -36,7 +37,11 @@ namespace FlightSimulator.ViewModels
         }
         private void OnConnect()
         {
-            model.connectToServers();
+            Thread infoServerThread, commandsServerThread;
+            infoServerThread = new Thread(new ThreadStart(model.ConnectInfoServer));
+            infoServerThread.Start();
+            commandsServerThread = new Thread(new ThreadStart(model.ConnectCommandsServer));
+            commandsServerThread.Start();
         }
         #endregion
         #region SettingsCommand
