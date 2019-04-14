@@ -54,7 +54,9 @@
         </Grid>
         <!--joystick-->
         <Grid Grid.Column="3" Grid.Row="2" >
-            <local:Joystick  HorizontalAlignment="Center" VerticalAlignment="Center" Height="379" Margin="0,0,0,5.8" Width="336"/>
+            <local:Joystick  HorizontalAlignment="Center" VerticalAlignment="Center" Height="379" Margin="0,0,0,5.8" Width="336"
+                             Aileron="{Binding ElementName=AilronValue, Path=Text, Mode=OneWayToSource}"
+                             Elevator="{Binding ElementName=ElevatorValue, Path=Text, Mode=OneWayToSource}"  />
         </Grid>
 
         <Grid  Grid.Column="4" Grid.Row="2" >
@@ -74,13 +76,13 @@
                 </TextBlock.RenderTransform>
             </TextBlock>
             <!--aileron text value-->
-            <TextBlock Grid.Row="0" Text="{Binding Aileron}" HorizontalAlignment="Center" Height="16" VerticalAlignment="Top"  >
+            <TextBlock Grid.Row="0"  Name="AilronValue" Text="{Binding Aileron, UpdateSourceTrigger=PropertyChanged ,Mode=OneWayToSource}" HorizontalAlignment="Center" Height="16" VerticalAlignment="Top"  >
                 <TextBlock.Foreground>
                     <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ActiveCaptionTextColorKey}}"/>
                 </TextBlock.Foreground>
             </TextBlock>
             <!--elevator value-->
-            <TextBlock x:Name="elevatorValue" Grid.Row="1" Text="{Binding Elevator}" VerticalAlignment="Top">
+            <TextBlock  Name="ElevatorValue" Text="{Binding Elevator, UpdateSourceTrigger=PropertyChanged , Mode=OneWayToSource, StringFormat={}{0:0.00}}" Grid.Row="1"  VerticalAlignment="Top">
                 <TextBlock.Foreground>
                     <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ActiveCaptionTextColorKey}}"/>
                 </TextBlock.Foreground>

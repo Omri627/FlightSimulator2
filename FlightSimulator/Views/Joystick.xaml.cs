@@ -22,6 +22,7 @@ namespace FlightSimulator.Views
     /// </summary>
     public partial class Joystick : UserControl
     {
+        readonly int DecimalPrecision = 2;
         /// <summary>Current Aileron</summary>
         public static readonly DependencyProperty AileronProperty =
             DependencyProperty.Register("Aileron", typeof(double), typeof(Joystick),null);
@@ -153,8 +154,8 @@ namespace FlightSimulator.Views
             knobPosition.Y = deltaPos.Y;
 
             //normalizing the values
-            Aileron = Aileron / 124;
-            Elevator = Elevator / 124;
+            Aileron = Math.Round(Aileron / 124, DecimalPrecision);
+            Elevator = Math.Round(Elevator / 124, DecimalPrecision);
 
             if (Moved == null ||
                 (!(Math.Abs(_prevAileron - Aileron) > AileronStep) && !(Math.Abs(_prevElevator - Elevator) > ElevatorStep)))
