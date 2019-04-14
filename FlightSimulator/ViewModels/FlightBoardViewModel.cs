@@ -8,23 +8,37 @@ using System.Windows.Input;
 using FlightSimulator.Model;
 using FlightSimulator.Views.Windows;
 using System.Threading;
+using System.ComponentModel;
 
 namespace FlightSimulator.ViewModels
 {
-    public class FlightBoardViewModel : BaseNotify
+    public class FlightBoardViewModel : BaseNotify, INotifyPropertyChanged
     {
         private FlightModel model;
+        private SymbolTable symbolTable;
+        public event PropertyChangedEventHandler PropertyChanged;
         public FlightBoardViewModel() {
             model = new FlightModel();
+            symbolTable = SymbolTable.Instance;
+            symbolTable.PropertyChanged += delegate (object sender, PropertyChangedEventArgs args)
+            {
+                PropertyChanged?.Invoke(sender, new PropertyChangedEventArgs(args.PropertyName));
+            };
         }
         public double Lon
         {
-            get;
+            get
+            {
+                return symbolTable[SymbolTable.LONGITUDE_DEG];
+            }
         }
 
         public double Lat
         {
-            get;
+            get
+            {
+                return symbolTable[SymbolTable.LATITUDE_DEG];
+            }
         }
         #region Commands
         #region ConnectCommand
@@ -46,6 +60,7 @@ namespace FlightSimulator.ViewModels
         #endregion
         #region SettingsCommand
         private ICommand _settingCommand;
+
         public ICommand SettingCommand
         {
             get {

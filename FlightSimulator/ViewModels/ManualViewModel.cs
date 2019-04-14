@@ -12,37 +12,35 @@ namespace FlightSimulator.ViewModels
     class ManualViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
-        private SymbolTable symbolTable;
+        private double rudder;
+        private double elevator;
+        private double throttle;
+        private double aileron;
         public ManualViewModel() {
-            symbolTable = SymbolTable.Instance;
-            symbolTable.PropertyChanged += delegate(object sender, PropertyChangedEventArgs args)
-            {
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(args.PropertyName));
-            };
+
         }
         public double Rudder
         {
             get {
-                return Floor(symbolTable[SymbolTable.RUDDER]);
+                return rudder;
             }
             set {
                 if (value >= 0 && value <= 1)
                 {
-                    symbolTable[SymbolTable.RUDDER] = value;
+                    rudder = value;
                     PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Rudder"));
-
                 }
             }
         }
         public double Elevator
         {
             get {
-                return Floor(symbolTable[SymbolTable.ALEVATOR]);
+                return elevator;
             }
             set {
                 if (value >= 0 && value <= 1)
                 {
-                    symbolTable[SymbolTable.ALEVATOR] = value;
+                    elevator = value;
                     PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Elevator"));
                 }
             }
@@ -50,12 +48,12 @@ namespace FlightSimulator.ViewModels
         public double Throttle
         {
             get {
-                return Floor(symbolTable[SymbolTable.THROTTLE]);
+                return throttle;
             }
             set {
                 if (value >= 0 && value <= 1)
                 {
-                    symbolTable[SymbolTable.THROTTLE] = value;
+                    throttle = value;
                     PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Throttle"));
                 }
             }
@@ -63,19 +61,15 @@ namespace FlightSimulator.ViewModels
         public double Aileron
         {
             get {
-                return Floor(symbolTable[SymbolTable.AILERON]);
+                return aileron;
             }
             set {
                 if (value >= 0 && value <= 1)
                 {
-                    symbolTable[SymbolTable.AILERON] = value;
+                    aileron = value;
                     PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Aileron"));
                 }
             }
-        }
-        public double Floor(double num)
-        {
-            return Math.Floor(num * 100) / 100;
         }
     }
 }
