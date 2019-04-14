@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 
 namespace FlightSimulator.Model
 {
@@ -18,16 +19,15 @@ namespace FlightSimulator.Model
             return code.Split('\n').ToList();
         }
         public void ExecuteCode(string code)
-        {
-            server = CommandsServer.Instance;
-            
+        {            
             if (server == null)
                 return;
             List<string> commands = GetCommands(code);
             foreach (string cmd in commands) {
-
-                server.Write(cmd + "/r/n");
+                server.Write(cmd + "\n");
+                Thread.Sleep(2000);                     // delay for 2 seconds
             }
+
         }
     }
 }

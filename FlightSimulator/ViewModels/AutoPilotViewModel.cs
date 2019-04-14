@@ -12,11 +12,11 @@ namespace FlightSimulator.ViewModels
     class AutoPilotViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
-        AutoPilotModel model;
+        private AutoPilotModel model;
         private string code;
+        private string color;
         public AutoPilotViewModel()
         {
-            Code = "Auto pilot text";
             model = new AutoPilotModel();
         }
         public string Code {
@@ -25,7 +25,21 @@ namespace FlightSimulator.ViewModels
             }
             set {
                 code = value;
+                if (code != string.Empty)
+                    Color = "Salmon";
+                else
+                    Color = "White";
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Code"));
+            }
+        }
+        public string Color
+        {
+            get {
+                return color;
+            }
+            set {
+                color = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Color"));
             }
         }
         #region Commands
@@ -40,6 +54,7 @@ namespace FlightSimulator.ViewModels
         private void OnCancel()
         {
             Code = "";
+            Color = "White";
         }
         #endregion
         #region
@@ -54,6 +69,7 @@ namespace FlightSimulator.ViewModels
         private void OnOk()
         {
             model.ExecuteCode(code);
+            Color = "White";
             Code = "";
         }
 
