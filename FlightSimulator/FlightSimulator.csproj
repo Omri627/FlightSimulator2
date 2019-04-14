@@ -73,6 +73,7 @@
     <Compile Include="Model\EventArgs\VirtualJoystickEventArgs.cs" />
     <Compile Include="Model\Interface\ISettingsModel.cs" />
     <Compile Include="Model\InfoServer.cs" />
+    <Compile Include="Model\ManualModel.cs" />
     <Compile Include="Model\Server.cs" />
     <Compile Include="Model\SymbolTable.cs" />
     <Compile Include="ViewModels\AutoPilotViewModel.cs" />
