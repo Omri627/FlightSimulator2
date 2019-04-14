@@ -31,7 +31,7 @@ namespace FlightSimulator
             InfoServer server = new InfoServer(5400);
             server.connectToServer();
             //SettingButton.Content = "connect pressed";
-            server.write("write a message: ");
+            server.Write("write a message: ");
             string message = server.read();
             //ConnectButton.Content = message;
         }

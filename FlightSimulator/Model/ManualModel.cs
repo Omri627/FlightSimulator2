@@ -16,7 +16,7 @@ namespace FlightSimulator.Model
         public void SetProperty(string property, double value)
         {
             string command = "set " + property + " " + value + "\r\n";
-            server.write(command);
+            server.Write(command);
         }
     }
 }

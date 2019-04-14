@@ -14,13 +14,13 @@ namespace FlightSimulator.Model
         protected TcpClient client;
         public abstract void connectToServer();
         public abstract void closeConnection();
-        public bool write(string command)
+        public bool Write(string command)
         {
             if (client == null || !client.Connected)
                 return false;
             NetworkStream stream = client.GetStream();
             BinaryWriter writer = new BinaryWriter(stream);
-            writer.Write(command);
+            writer.Write(Encoding.ASCII.GetBytes(command));
             return true;
         }
         public string read()

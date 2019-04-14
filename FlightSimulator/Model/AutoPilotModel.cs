@@ -20,11 +20,13 @@ namespace FlightSimulator.Model
         public void ExecuteCode(string code)
         {
             server = CommandsServer.Instance;
+            
             if (server == null)
                 return;
             List<string> commands = GetCommands(code);
             foreach (string cmd in commands) {
-                server.write(cmd);
+
+                server.Write(cmd + "/r/n");
             }
         }
     }
