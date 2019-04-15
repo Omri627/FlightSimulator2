@@ -32,7 +32,7 @@ namespace FlightSimulator
             server.connectToServer();
             //SettingButton.Content = "connect pressed";
             server.Write("write a message: ");
-            string message = server.read();
+            string message = server.Read();
             //ConnectButton.Content = message;
         }
         

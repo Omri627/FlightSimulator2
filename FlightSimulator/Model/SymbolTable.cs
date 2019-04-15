@@ -155,6 +155,9 @@ namespace FlightSimulator.Model
             }
             return valuesQueue;
         }
+        /**
+         * print all symbol table values
+         * */
         public void PrintItems()
         {
             Console.Write("Symbol Table: ");
@@ -164,6 +167,9 @@ namespace FlightSimulator.Model
             }
             Console.WriteLine();
         }
+        /**
+         * return the property assign with the index at the symbolTable
+         * */
         private string GetProperty(int index)
         {
             switch (index)

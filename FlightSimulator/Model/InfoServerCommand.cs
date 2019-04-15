@@ -24,7 +24,7 @@ namespace FlightSimulator.Model
 
         public void Execute(object parameter)  {
             server.connectToServer();
-            string message = server.read();
+            string message = server.Read();
             server.closeConnection();
         }
     }

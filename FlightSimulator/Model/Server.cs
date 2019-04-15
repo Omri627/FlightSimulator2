@@ -23,7 +23,7 @@ namespace FlightSimulator.Model
             writer.Write(Encoding.ASCII.GetBytes(command));
             return true;
         }
-        public string read()
+        public string Read()
         {
             int index = 0;
             char ch;
