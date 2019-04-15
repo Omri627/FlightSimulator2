@@ -29,6 +29,7 @@ namespace FlightSimulator.ViewModels
         {
             get
             {
+                Console.WriteLine("LONGITUDE " + symbolTable[SymbolTable.LONGITUDE_DEG]);
                 return symbolTable[SymbolTable.LONGITUDE_DEG];
             }
         }
@@ -37,6 +38,7 @@ namespace FlightSimulator.ViewModels
         {
             get
             {
+                Console.WriteLine("LATITUDE " + symbolTable[SymbolTable.LATITUDE_DEG]);
                 return symbolTable[SymbolTable.LATITUDE_DEG];
             }
         }
