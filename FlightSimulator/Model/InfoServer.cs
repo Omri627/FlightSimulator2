@@ -35,6 +35,7 @@ namespace FlightSimulator.Model
         }
         public override void closeConnection()  {
             Stop = true;
+            client.Close();
             listener.Stop();
             client = null;
         }

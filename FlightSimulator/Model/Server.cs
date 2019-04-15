@@ -24,8 +24,6 @@ namespace FlightSimulator.Model
             set
             {
                 stop = value;
-                if (value == false)
-                    closeConnection();
             }
         }
         public bool Write(string command)
@@ -53,6 +51,7 @@ namespace FlightSimulator.Model
             } catch(Exception ex)
             {
                 Stop = false;
+                closeConnection();
                 return string.Empty;
             }
             data[index - 1] = '\0';
