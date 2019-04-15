@@ -27,12 +27,14 @@ namespace FlightSimulator.Views
     {
         ObservableDataSource<Point> planeLocations = null;
         FlightBoardViewModel viewModel;
+        bool firstTime;
 
         public FlightBoard()
         {
             InitializeComponent();
             DataContext = viewModel = new FlightBoardViewModel();
             viewModel.PropertyChanged += Vm_PropertyChanged;
+            firstTime = false;
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
@@ -46,11 +48,15 @@ namespace FlightSimulator.Views
 
         private void Vm_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
+            if (firstTime == false)
+            {
+                firstTime = true;
+                return;
+            }
             if(e.PropertyName.Equals("Lat") || e.PropertyName.Equals("Lon"))
             {
                 Point p1 = new Point(viewModel.Lat, viewModel.Lon);            // Fill here!
                 planeLocations.AppendAsync(Dispatcher, p1);
-               
             }
         }
 
