@@ -51,6 +51,7 @@ namespace FlightSimulator.Views
             if (firstTime == false)
             {
                 firstTime = true;
+                System.Threading.Thread.Sleep(500);
                 return;
             }
             if(e.PropertyName.Equals("Lat") || e.PropertyName.Equals("Lon"))

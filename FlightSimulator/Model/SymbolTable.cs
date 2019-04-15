@@ -124,6 +124,8 @@ namespace FlightSimulator.Model
         public void UpdateData(string data)
         {
             Queue<double> queue = SplitData(data);
+            if (queue == null)
+                return;
             int queueCount = queue.Count;
             for (int i = 0; i < table.Count; ++i)
             {
@@ -146,7 +148,8 @@ namespace FlightSimulator.Model
          * split the data from the string that separate by commas, and return a quque of doubles 
          * */
         private Queue<double> SplitData(string data)
-        {
+        {   if (data == string.Empty)
+                return null;
             string[] values = data.Split(',');
             Queue<double> valuesQueue = new Queue<double>();
             foreach (string s in values)

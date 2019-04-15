@@ -50,7 +50,7 @@
         <Grid Grid.Row="2" Grid.Column="2" VerticalAlignment="Center"  >
 
             <Slider x:Name="sliderThrottle" Value="{Binding Throttle}"  Minimum="0" Maximum="1" TickPlacement="BottomRight" TickFrequency="0.1"  Orientation="Vertical"
-                   Margin="-14,0,-0.6,38.6" Height="291" VerticalAlignment="Bottom"/>
+                   Margin="-14,0,-0.6,38.6" Height="291" VerticalAlignment="Bottom" SmallChange="0.1" IsSnapToTickEnabled="False" LargeChange="0.1"/>
         </Grid>
         <!--joystick-->
         <Grid Grid.Column="3" Grid.Row="2" >
@@ -96,7 +96,8 @@
         </Grid>
         <!-- rudder slider-->
         <Grid  Grid.Column="3" Grid.Row="3" >
-            <Slider x:Name="sliderRudder" Value="{Binding Rudder}" Minimum="-1" Maximum="1" TickPlacement="BottomRight" TickFrequency="0.1" Margin="25,0,55.8,0" />
+            <Slider x:Name="sliderRudder" Value="{Binding Rudder}" Minimum="-1" Maximum="1" TickPlacement="BottomRight" TickFrequency="0.1" Margin="25,0,55.8,0"
+                     SmallChange="0.1" IsSnapToTickEnabled="False" LargeChange="0.1"/>
         </Grid>
         <!-- rudder value-->
         <Grid Grid.Column="4" Grid.Row="3" >
