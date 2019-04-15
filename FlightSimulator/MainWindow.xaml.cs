@@ -21,19 +21,12 @@ namespace FlightSimulator
     /// </summary>
     public partial class MainWindow : Window
     {
+        FlightBoardViewModel vm;
         public MainWindow()
         {
             InitializeComponent();
-        }
-
-        private void ConnectButton_Click(object sender, RoutedEventArgs e)
-        {
-            InfoServer server = new InfoServer(5400);
-            server.connectToServer();
-            //SettingButton.Content = "connect pressed";
-            server.Write("write a message: ");
-            string message = server.read();
-            //ConnectButton.Content = message;
+            vm = new FlightBoardViewModel();
+            DataContext = vm;
         }
         
     }

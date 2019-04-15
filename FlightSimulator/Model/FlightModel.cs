@@ -32,5 +32,10 @@ namespace FlightSimulator.Model
             commands_server = CommandsServer.Instance;
             commands_server.connectToServer();
         }
+        public void DisconnectServers()
+        {
+            commands_server.closeConnection();
+            info_server.closeConnection();
+        }
     }
 }

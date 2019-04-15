@@ -19,10 +19,9 @@ namespace FlightSimulator.Model
         public InfoServer(int port) {
             this.port = port;
             symbolTable = SymbolTable.Instance;
-            Stop = false;
+            stop = false;
             isListening = false;
         }
-        public bool Stop { get; set; }
         public override void connectToServer()  {
             if (isListening == true || client != null)
                 return;
@@ -36,7 +35,6 @@ namespace FlightSimulator.Model
         }
         public override void closeConnection()  {
             Stop = true;
-            client.Close();
             listener.Stop();
             client = null;
         }

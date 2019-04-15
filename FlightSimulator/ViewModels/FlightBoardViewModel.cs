@@ -14,6 +14,7 @@ namespace FlightSimulator.ViewModels
 {
     public class FlightBoardViewModel : BaseNotify, INotifyPropertyChanged
     {
+        private bool isConnected;
         private FlightModel model;
         private SymbolTable symbolTable;
         public event PropertyChangedEventHandler PropertyChanged;
@@ -24,12 +25,23 @@ namespace FlightSimulator.ViewModels
             {
                 PropertyChanged?.Invoke(sender, new PropertyChangedEventArgs(args.PropertyName));
             };
+            IsConnected = false;
+        }
+       public bool IsConnected {
+            get
+            {
+                return isConnected;
+            }
+            set
+            {
+                isConnected = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("IsConnected"));
+            }
         }
         public double Lon
         {
             get
             {
-                Console.WriteLine("LONGITUDE " + symbolTable[SymbolTable.LONGITUDE_DEG]);
                 return symbolTable[SymbolTable.LONGITUDE_DEG];
             }
         }
@@ -38,7 +50,6 @@ namespace FlightSimulator.ViewModels
         {
             get
             {
-                Console.WriteLine("LATITUDE " + symbolTable[SymbolTable.LATITUDE_DEG]);
                 return symbolTable[SymbolTable.LATITUDE_DEG];
             }
         }
@@ -58,6 +69,7 @@ namespace FlightSimulator.ViewModels
             infoServerThread.Start();
             commandsServerThread = new Thread(new ThreadStart(model.ConnectCommandsServer));
             commandsServerThread.Start();
+            IsConnected = true;
         }
         #endregion
         #region SettingsCommand
@@ -73,6 +85,22 @@ namespace FlightSimulator.ViewModels
         {
             SettingsWindow settings = new SettingsWindow();
             settings.Show();
+        }
+        #endregion
+        #region ExitCommand
+        private ICommand _exitCommand;
+
+        public ICommand ExitCommand
+        {
+            get
+            {
+                return _exitCommand ?? (_exitCommand = new CommandHandler(() => onExit()));
+            }
+        }
+        private void onExit()
+        {
+            model.DisconnectServers();
+            IsConnected = false;
         }
         #endregion
         #endregion

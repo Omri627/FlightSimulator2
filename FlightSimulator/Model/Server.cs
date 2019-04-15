@@ -11,9 +11,23 @@ namespace FlightSimulator.Model
 {
     abstract class Server
     {
+        protected bool stop;
         protected TcpClient client;
         public abstract void connectToServer();
         public abstract void closeConnection();
+        public bool Stop
+        {
+            get
+            {
+                return stop;
+            }
+            set
+            {
+                stop = value;
+                if (value == false)
+                    closeConnection();
+            }
+        }
         public bool Write(string command)
         {
             if (client == null || !client.Connected)
@@ -32,8 +46,15 @@ namespace FlightSimulator.Model
                 return string.Empty;
             NetworkStream stream = client.GetStream();
             BinaryReader reader = new BinaryReader(stream);
-            while ((ch = reader.ReadChar()) != '\n')
-                data[index++] = ch;
+            try
+            {
+                while ((ch = reader.ReadChar()) != '\n')
+                    data[index++] = ch;
+            } catch(Exception ex)
+            {
+                Stop = false;
+                return string.Empty;
+            }
             data[index - 1] = '\0';
             return new string(data, 0, index - 1);
         }
