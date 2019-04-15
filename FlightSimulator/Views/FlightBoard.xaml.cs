@@ -50,7 +50,7 @@ namespace FlightSimulator.Views
             {
                 Point p1 = new Point(viewModel.Lat, viewModel.Lon);            // Fill here!
                 planeLocations.AppendAsync(Dispatcher, p1);
-               
+                              
             }
         }
 
