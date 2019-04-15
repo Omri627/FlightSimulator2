@@ -43,7 +43,7 @@ namespace FlightSimulator.Model
             string data;                            // data received from server
             while (Stop == false)
             {
-                data = read();
+                data = Read();
                 symbolTable.UpdateData(data);
             }
         }

@@ -14,13 +14,17 @@ namespace FlightSimulator.ViewModels.Windows
     {
         private ISettingsModel model;
         private Window window;
-
+        /**
+         * constructor
+         **/
         public SettingsWindowViewModel(ISettingsModel model, Window window)
         {
             this.model = model;
             this.window = window;
         }
-
+        /**
+         * prperty of the flight server ip
+         **/
         public string FlightServerIP
         {
             get { return model.FlightServerIP; }
@@ -30,7 +34,9 @@ namespace FlightSimulator.ViewModels.Windows
                 NotifyPropertyChanged("FlightServerIP");
             }
         }
-
+        /**
+         * prperty of the flight command server port
+         **/
         public int FlightCommandPort
         {
             get { return model.FlightCommandPort; }
@@ -40,7 +46,9 @@ namespace FlightSimulator.ViewModels.Windows
                 NotifyPropertyChanged("FlightCommandPort");
             }
         }
-
+        /**
+         * prperty of the flight info server port
+         **/
         public int FlightInfoPort
         {
             get { return model.FlightInfoPort; }
@@ -50,11 +58,16 @@ namespace FlightSimulator.ViewModels.Windows
                 NotifyPropertyChanged("FlightInfoPort");
             }
         }
+        /**
+         * save the setting to the app.config
+         **/
         public void SaveSettings()
         {
             model.SaveSettings();
         }
-
+        /**
+         * reload the setting of the app.config, not saving them
+         **/
         public void ReloadSettings()
         {
             model.ReloadSettings();
@@ -62,6 +75,7 @@ namespace FlightSimulator.ViewModels.Windows
 
         #region Commands
         #region ClickCommand
+        
         private ICommand _clickCommand;
         public ICommand ClickCommand
         {
@@ -72,6 +86,7 @@ namespace FlightSimulator.ViewModels.Windows
         }
         private void OnClick()
         {
+            //save the settings and close the settings window
             model.SaveSettings();
             window.Close();
         }
@@ -88,6 +103,7 @@ namespace FlightSimulator.ViewModels.Windows
         }
         private void OnCancel()
         {
+            //not save the settings and close the settings window
             model.ReloadSettings();
             window.Close();
         }
