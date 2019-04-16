@@ -10,8 +10,11 @@ Make sure to run FlightGear with the following settings:
 
 ### Operating Instructions
 1 First run the app(GUI), make sure the settings are correct, and then click connect.
+
 2 Start FlightGear simulator with the above settings.
+
 3 Controll the plane via manual or automatic controller.
+
 * Manual - controll rudder, throttle, aielron and elevator  values
 * Automatic - press OK to send set of [commands](http://wiki.flightgear.org/Telnet_usage#set) to the simulator, there is two seconds delay between commands.
 -----
