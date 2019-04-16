@@ -14,3 +14,6 @@ Make sure to run FlightGear with the following settings:
 3 Controll the plane via manual or automatic controller.
 * Manual - controll rudder, throttle, aielron and elevator  values
 * Automatic - press OK to send set of [commands](http://wiki.flightgear.org/Telnet_usage#set) to the simulator, there is two seconds delay between commands.
+-----
+<img width="748" alt="FlightGear Controller" src="https://user-images.githubusercontent.com/45949383/56209850-35a8f100-605d-11e9-9318-88042c90ab2d.PNG">
+
