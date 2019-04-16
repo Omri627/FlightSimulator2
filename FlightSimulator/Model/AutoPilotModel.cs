@@ -35,12 +35,16 @@ namespace FlightSimulator.Model
         {            
             if (server == null || code == null || code == string.Empty)
                 return;
-            List<string> commands = GetCommands(code);
-            foreach (string cmd in commands) {
-                server.Write(cmd + "\r\n");
-                Thread.Sleep(2000);                     // delay for 2 seconds
-            }
+            new Thread(() =>
+            {
+                List<string> commands = GetCommands(code);
+                foreach (string cmd in commands)
+                {
+                    server.Write(cmd + "\r\n");
+                    Thread.Sleep(2000);                     // delay for 2 seconds
 
+                }
+            }).Start();
         }
     }
 }
