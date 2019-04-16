@@ -1,5 +1,5 @@
 # FlightGear Controller
-We built a GUI interface (WPF application) which will allow us to control the plane in [FlightGear](http://home.flightgear.org/) simulator
+We built a GUI interface (WPF application) which will allow us to control the plane in [FlightGear](http://home.flightgear.org/) simulator.
 ### Dependencies:
 Add generic_small.xml to [$FG_ROOT](http://wiki.flightgear.org/$FG_ROOT)/Protocol/ directory.
 Make sure to run FlightGear with the following settings:
