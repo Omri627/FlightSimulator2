@@ -105,22 +105,28 @@ namespace FlightSimulator.Views
         /// <summary>This event fires once the joystick is captured</summary>
         public event EmptyJoystickEventHandler Captured;
 
-        private Point _startPos;
-        private double _prevAileron, _prevElevator;
-        private double canvasWidth, canvasHeight;
-        private readonly Storyboard centerKnob;
-
+        private Point _startPos;                        // location of start point
+        private double _prevAileron, _prevElevator;     // pervious aileron and elevator values 
+        private double canvasWidth, canvasHeight;       // canvas height and width
+        private readonly Storyboard centerKnob;        
+        /**
+         *  the constructor creates presentation of Joystick Control based on the xaml code
+         *  and initialized his properties
+         **/
         public Joystick()
         {
             InitializeComponent();
-
+            /* appends methods to event members */
             Knob.MouseLeftButtonDown += Knob_MouseLeftButtonDown;
             Knob.MouseLeftButtonUp += Knob_MouseLeftButtonUp;
             Knob.MouseMove += Knob_MouseMove;
-
+       
             centerKnob = Knob.Resources["CenterKnob"] as Storyboard;
         }
-
+        /**
+         *  Knob_MouseLeftButtonDown method moves the knob toward left bottom direction.
+         *  and notify all of knob movement changes
+         **/
         private void Knob_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             _startPos = e.GetPosition(Base);
@@ -132,7 +138,9 @@ namespace FlightSimulator.Views
 
             centerKnob.Stop();
         }
-
+        /**
+         *  Knob_MouseMove method moves the knob and notify all of knob movement changes
+         **/
         private void Knob_MouseMove(object sender, MouseEventArgs e)
         {
             if (!Knob.IsMouseCaptured) return;
@@ -144,13 +152,16 @@ namespace FlightSimulator.Views
             double distance = Math.Round(Math.Sqrt(deltaPos.X * deltaPos.X + deltaPos.Y * deltaPos.Y));
             if (distance >= canvasWidth / 2 || distance >= canvasHeight / 2)
                 return;
+            
+            /* aileron and elevator values base on knob movement */
             Aileron = deltaPos.X;
             Elevator = -deltaPos.Y;
-
+            
+            /* get knob position */
             knobPosition.X = deltaPos.X;
             knobPosition.Y = deltaPos.Y;
 
-            //normalizing the values
+            /* normalizing the values */
             Aileron = Math.Round(Aileron / 124, DecimalPrecision);
             Elevator = Math.Round(Elevator / 124, DecimalPrecision);
 
@@ -159,17 +170,24 @@ namespace FlightSimulator.Views
                 return;
 
             Moved?.Invoke(this, new VirtualJoystickEventArgs { Aileron = Aileron, Elevator = Elevator });
+            /* save prev properties */
             _prevAileron = Aileron;
             _prevElevator = Elevator;
 
         }
-
+        /**
+         *  Knob_MouseLeftButtonUp method moves the knob toward left up direction.
+         *  and notify all of knob movement changes
+         **/
         private void Knob_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             Knob.ReleaseMouseCapture();
             centerKnob.Begin();
         }
-
+        /**
+        *  centerKnob_Completed method center the knob when knob movement completed
+        *  and notify all of knob movement changes
+        **/
         private void centerKnob_Completed(object sender, EventArgs e)
         {
             Aileron = Elevator = _prevAileron = _prevElevator = 0;

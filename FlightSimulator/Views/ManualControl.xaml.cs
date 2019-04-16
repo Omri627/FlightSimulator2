@@ -21,17 +21,18 @@ namespace FlightSimulator.Views
     /// </summary>
     public partial class ManualControl : UserControl
     {
-        private ManualViewModel manual_vm;
+        private ManualViewModel manual_vm;      // view model instance of manual
+       /**
+        *  the constructor creates presentation of Manual Control based on the xaml code
+        *  and initialized his properties
+        **/
         public ManualControl()
         {
             InitializeComponent();
             manual_vm = new ManualViewModel();
+            /* changes the data context to view model */
             DataContext = manual_vm;
         }
-
-        private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
-        {
-
-        }
+        
     }
 }

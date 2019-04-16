@@ -21,11 +21,16 @@ namespace FlightSimulator.Views
     /// </summary>
     public partial class AutoPilotControl : UserControl
     {
-        private AutoPilotViewModel vm;
+        private AutoPilotViewModel vm;          // auto pilot view model instance
+        /**
+         *  the constructor creates presentation of AutoPilot Control based on the xaml code
+         *  and initialized his properties
+         **/
         public AutoPilotControl()
         {
             InitializeComponent();
-            vm = new AutoPilotViewModel();
+            vm = new AutoPilotViewModel();      
+            /* changes the data context to view model */
             DataContext = vm;
         }
     }

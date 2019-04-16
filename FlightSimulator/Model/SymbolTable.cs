@@ -160,7 +160,7 @@ namespace FlightSimulator.Model
         }
         /**
          * print all symbol table values
-         * */
+         **/
         public void PrintItems()
         {
             Console.Write("Symbol Table: ");
@@ -169,6 +169,10 @@ namespace FlightSimulator.Model
                 Console.Write("{0},", value);
             }
             Console.WriteLine();
+        }
+        public void NotifyCloseConnection()
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("EnableConnect"));
         }
         /**
          * return the property assign with the index at the symbolTable

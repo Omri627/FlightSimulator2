@@ -22,11 +22,16 @@ namespace FlightSimulator.Views.Windows
     public partial class SettingsWindow : Window
     {
         private SettingsWindowViewModel vm;
+        /**
+        *  the constructor creates presentation of SettingsWindow Control based on the xaml code
+        *  and initialized his properties
+        **/
         public SettingsWindow()
         {
            
             InitializeComponent();
             vm = new SettingsWindowViewModel(ApplicationSettingsModel.Instance, this);
+            /* changes the data context to view model */
             DataContext = vm;
         }
     }

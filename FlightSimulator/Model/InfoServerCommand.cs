@@ -12,8 +12,8 @@ namespace FlightSimulator.Model
     class InfoServerCommand : ICommand
     {
         public event EventHandler CanExecuteChanged;
-        private int port;
-        private InfoServer server;
+        private int port;                     
+        private InfoServer server;             
         InfoServerCommand(int port)  {
             this.port = port;
             server = new InfoServer(port);

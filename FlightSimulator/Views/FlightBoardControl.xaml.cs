@@ -22,10 +22,15 @@ namespace FlightSimulator.Views
     public partial class FlightBoardControl : UserControl
     {
         private FlightBoardViewModel vm;
+        /**
+        *  the constructor creates presentation of FlightBoard Control based on the xaml code
+        *  and initialized his properties
+        **/
         public FlightBoardControl()
         {
             InitializeComponent();
             vm = new FlightBoardViewModel();
+            /* changes the data context to view model */
             DataContext = vm;
         }
     }

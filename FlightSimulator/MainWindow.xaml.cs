@@ -21,12 +21,9 @@ namespace FlightSimulator
     /// </summary>
     public partial class MainWindow : Window
     {
-        FlightBoardViewModel vm;
         public MainWindow()
         {
             InitializeComponent();
-            vm = new FlightBoardViewModel();
-            DataContext = vm;
         }
         
     }

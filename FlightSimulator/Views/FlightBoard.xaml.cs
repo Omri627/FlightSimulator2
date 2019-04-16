@@ -25,10 +25,14 @@ namespace FlightSimulator.Views
     /// </summary>
     public partial class FlightBoard : UserControl
     {
-        ObservableDataSource<Point> planeLocations = null;
-        FlightBoardViewModel viewModel;
-        bool firstTime;
-
+        ObservableDataSource<Point> planeLocations = null;       // points data strcture
+        FlightBoardViewModel viewModel;         // view mode lof flight board
+        bool firstTime;                         // boolean variable used to indicate whether the first value 
+                                                // recived from data-set 
+        /**
+         *  the constructor creates presentation of FlightBoard Control based on the xaml code
+         *  and initialized his properties
+         **/
         public FlightBoard()
         {
             InitializeComponent();
@@ -36,7 +40,10 @@ namespace FlightSimulator.Views
             viewModel.PropertyChanged += Vm_PropertyChanged;
             firstTime = false;
         }
-
+        /**
+         * UserControl_Loaded method adds points and prints the points
+         * received from server on graph
+         **/
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             planeLocations = new ObservableDataSource<Point>();
@@ -45,18 +52,23 @@ namespace FlightSimulator.Views
 
             plotter.AddLineGraph(planeLocations, 2, "Route");
         }
-
+        /**
+         * Vm_PropertyChanged method called whenever lat or lon changed.
+         * and appends new points to data structure denote the location of plane in flightgear.
+         **/
         private void Vm_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
+            /* dont inserts values before the flight-gear is fully connected */
             if (firstTime == false)
             {
                 firstTime = true;
                 System.Threading.Thread.Sleep(500);
                 return;
             }
-            if(e.PropertyName.Equals("Lat") || e.PropertyName.Equals("Lon"))
+            /* appends new points to data structure denote the location of plane in flightgear */
+            if (e.PropertyName.Equals("Lat") || e.PropertyName.Equals("Lon"))
             {
-                //create new point and add it to planeLocations
+                // create new point and add it to planeLocations
                 Point p1 = new Point(viewModel.Lat, viewModel.Lon);
                 planeLocations.AppendAsync(Dispatcher, p1);
             }

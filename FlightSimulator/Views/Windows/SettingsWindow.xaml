@@ -28,8 +28,8 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Button x:Name="ok" Grid.Column="0" HorizontalAlignment="Center"  Margin="5,5,5,5" Padding="5" Width="50" Command="{Binding ClickCommand}">ok</Button>
-            <Button x:Name="cancel" Grid.Column="1" HorizontalAlignment="Center"  Margin="5" Padding="5" Width="50" Command="{Binding CancelCommand}">cancel</Button>
+            <Button x:Name="ok" Grid.Column="0" HorizontalAlignment="Center"  Margin="5,5,5,5" Padding="5" Width="55" Command="{Binding ClickCommand}" Content="Ok"/>
+            <Button x:Name="cancel" Grid.Column="1" HorizontalAlignment="Center"  Margin="5" Padding="5" Width="55" Command="{Binding CancelCommand}" Content="Cancel"/>
         </Grid>
 
     </Grid>
