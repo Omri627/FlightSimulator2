@@ -10,11 +10,11 @@ namespace FlightSimulator.Model
     class AutoPilotModel
     {
         private CommandsServer server;          // commands flight server
-        /**
-         * AutoPilotModel creates auto-pilot model instance
-         * the model responsible for auto-pilot logics and contains methods which performs
-         * complex calculations and operations
-         **/ 
+                                                /**
+                                                 * AutoPilotModel creates auto-pilot model instance
+                                                 * the model responsible for auto-pilot logics and contains methods which performs
+                                                 * complex calculations and operations
+                                                 **/
         public AutoPilotModel()
         {
             server = CommandsServer.Instance;
@@ -32,19 +32,16 @@ namespace FlightSimulator.Model
          * and executes the command one by one.
          **/
         public void ExecuteCode(string code)
-        {            
+        {
             if (server == null || code == null || code == string.Empty)
                 return;
-            new Thread(() =>
-            {
-                List<string> commands = GetCommands(code);
-                foreach (string cmd in commands)
-                {
-                    server.Write(cmd + "\r\n");
-                    Thread.Sleep(2000);                     // delay for 2 seconds
 
-                }
-            }).Start();
+            List<string> commands = GetCommands(code);
+            foreach (string cmd in commands)
+            {
+                server.Write(cmd + "\r\n");
+                Thread.Sleep(2000);                     // delay for 2 seconds
+            }
         }
     }
 }

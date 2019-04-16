@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 using System.Windows.Input;
 using FlightSimulator.Model;
 
@@ -101,9 +98,11 @@ namespace FlightSimulator.ViewModels
         **/
         private void OnOk()
         {
-            model.ExecuteCode(code);
-            Color = "White";
-            Code = "";
+            new Thread(() =>
+            {
+                model.ExecuteCode(code);
+                Color = "White";
+            }).Start();
         }
 
         #endregion
